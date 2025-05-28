@@ -7,8 +7,8 @@ export default {
 
   async onEnable(ctx) {
     try {
-      const userMemory = JSON.parse(readFileSync('./user_memory.json', 'utf-8'));
-      const activeMemory = JSON.parse(readFileSync('./active_memory.json', 'utf-8'));
+     const userMemory = JSON.parse(readFileSync('../llm_memory/user_memory.json', 'utf-8'));
+     const activeMemory = JSON.parse(readFileSync('../llm_memory/active_memory.json', 'utf-8'));
 
       const summary = [];
 
