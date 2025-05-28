@@ -1,0 +1,7 @@
+{
+  "name": "LuciferMemory",
+  "version": "1.0.0",
+  "description": "Auto-loads Diana's memory files into system_prompt on chat start.",
+  "author": "Diana & ChatGPT",
+  "entry": "lucifer_memory.js"
+}
