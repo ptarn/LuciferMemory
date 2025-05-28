@@ -23,7 +23,7 @@ export default {
         summary.push(`Personality flags:\n${Object.entries(userMemory.personality_flags).map(([k, v]) => `- ${k}: ${v}`).join('\n')}`);
       }
 
-      if (userMemory.story_preferences?.themes) {
+      if (userMemory.story_preferences && userMemory.story_preferences.themes) {
         summary.push(`Story themes: ${userMemory.story_preferences.themes.join(', ')}`);
       }
 
