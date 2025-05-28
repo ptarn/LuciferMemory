@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs';
-import path from 'path';
 
 export default {
   id: 'LuciferMemory',
@@ -8,10 +7,8 @@ export default {
 
   async onEnable(ctx) {
     try {
-      const baseDir = path.resolve('llm_memory'); // Ensure path is relative to root folder
-
-      const userMemory = JSON.parse(readFileSync(path.join(baseDir, 'user_memory.json'), 'utf-8'));
-      const activeMemory = JSON.parse(readFileSync(path.join(baseDir, 'active_memory.json'), 'utf-8'));
+      const userMemory = JSON.parse(readFileSync('./llm_memory/user_memory.json', 'utf-8'));
+      const activeMemory = JSON.parse(readFileSync('./llm_memory/active_memory.json', 'utf-8'));
 
       const summary = [];
 
@@ -42,15 +39,16 @@ export default {
       }
 
       const combinedMemory = summary.join('\n\n');
+
       ctx.setSystemPrompt(combinedMemory);
-      console.log('[LuciferMemory] ✅ Memory injected into system_prompt.');
+      console.log('[LuciferMemory] Memory injected into system_prompt.');
     } catch (err) {
-      console.error('[LuciferMemory] ❌ Failed to load memory:', err);
+      console.error('[LuciferMemory] Failed to load memory:', err);
     }
   },
 
   async onDisable(ctx) {
     ctx.setSystemPrompt('');
-    console.log('[LuciferMemory] 🔁 System prompt cleared.');
+    console.log('[LuciferMemory] System prompt cleared.');
   },
 };
